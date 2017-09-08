@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import axios from 'axios';
+import './Header.css';
 
 class Component1 extends Component {
     constructor() {
