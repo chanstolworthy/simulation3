@@ -1,8 +1,8 @@
 -- Creating table if one does not exists, resetting it each load
 -- Seed files or schemas are just for production purposes
-DROP TABLE IF EXISTS heloUsers;
+DROP TABLE IF EXISTS heloUuers;
 
-CREATE TABLE IF NOT EXISTS heloUsers(
+CREATE TABLE IF NOT EXISTS helousers(
 id SERIAL PRIMARY KEY,
 	first_name TEXT,
     last_name TEXT,
@@ -18,7 +18,7 @@ id SERIAL PRIMARY KEY,
     auth_id TEXT
 );
 
-INSERT INTO heloUsers
+INSERT INTO helousers
 ( user_image, birthday_year, hair_color, eye_color, birthday_day, gender, auth_id, first_name, last_name )
 VALUES
  ('https://robohash.org/dowdlskdwwq.jpg?size=200x200&set=set1', '1952/02/08', 'Aquamarine', 'Green', '', 'Male', 1, 'Izak', 'Cholomin');

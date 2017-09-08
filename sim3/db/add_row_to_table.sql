@@ -1,4 +1,4 @@
-INSERT INTO heloUsers 
+INSERT INTO helousers 
     (first_name,
     last_name,
     gender,
