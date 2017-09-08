@@ -8,7 +8,10 @@ const express = require('express')
     , passport = require('passport')
     , chalk = require('chalk');
 
-const strategy = './strategy';
+const strategy = require('./strategy');
+const auth_controller = require('./controllers/auth_controller');
+const Auth0Strategy = require('passport-auth0');
+
 
 var app = express();
 app.use(bodyParser.json() );
@@ -21,16 +24,19 @@ app.use( session({
 }))
 app.use( passport.initialize() );
 app.use( passport.session() );
-// passport.use( strategy );
 
-massive('localhost:3001/api/item'/*connectionString or URL*/).then(db => {
-    app.set('bd', db)
-    /*ADD SEE FILE IF NEEDED */
-    app.get('db').init.seed().then(res => {
-        console.log(res)
-}).catch(err => {
-    console.log(err)
-});
+massive( process.env.CONNECTIONSTRING ).then(db => {
+        app.set('bd', db);
+        app.get('db').init.seed().then(res => console.log(res) )
+    })
+//     .catch(err => {
+//         console.log(err)
+// });
+passport.use( strategy );
+
+
+
+//////////////////////////////////////////////////////////////// AUTHENTICATION
 
 // This is invoked once to set things up
 passport.serializeUser( function( user, done ) {
@@ -42,6 +48,16 @@ passport.deserializeUser( function( user, done ) {
         return done( null, user[0] )
     })
 } );
+
+// Auth Controllers
+app.get( '/auth', passport.authenticate('auth0') );
+app.get( '/auth/callback', passport.authenticate('auth0', {
+    successRedirect: 'ttp://localhost:3000/#/dashboard',
+    failureRedirect: 'http://localhost:3000/#/'
+}) );
+app.get( '/auth/me', auth_controller.get ); // Gets user if found
+app.get( '/auth/logout', auth_controller.logout )
+
 
 //CONTROLLERS BELOW
 
