@@ -22,6 +22,8 @@
 .button {
     display: flex;
     justify-content: space-around;
+    padding: 60px;
+    flex-grow: 3;
 }
 
 .login-button {
@@ -30,3 +32,64 @@
    background-image: radial-gradient(circle at 50% -46%, #737373, #403d39);
    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1), 0 6px 6px 0 rgba(0,0,0,0.2);
 }
+
+/* Background */
+
+body {background-color: black;
+    background-image: linear-gradient(99deg, #ff70a6, #ff9770 40%, #ffd670 73%, #e9ff70);}
+  
+  /* Pulse Grow */
+  @-webkit-keyframes hvr-pulse-grow {
+    to {
+      -webkit-transform: scale(1.1);
+      transform: scale(1.1);
+    }
+  }
+  @keyframes hvr-pulse-grow {
+    to {
+      -webkit-transform: scale(1.1);
+      transform: scale(1.1);
+    }
+  }
+  .hvr-pulse-grow {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px transparent;
+  }
+  .hvr-pulse-grow:hover, .hvr-pulse-grow:focus, .hvr-pulse-grow:active {
+    -webkit-animation-name: hvr-pulse-grow;
+    animation-name: hvr-pulse-grow;
+    -webkit-animation-duration: 0.3s;
+    animation-duration: 0.3s;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-direction: alternate;
+    animation-direction: alternate;
+  }
+  
+  .img{
+    height: 100px;
+    width: 100px;
+  }
+  .img1{
+    background-image: url('../../wink1600.png');
+    }
+
+.shadowtime {
+box-shadow: 0 0 1em black, 0 0 1em gray;
+    }
+
+    .dabox {
+        width: 300px;
+        height: 300px;
+        /* -ms-flex-align: center;
+        align-items: center;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-direction: column;
+        flex-direction: column; */
+    }
