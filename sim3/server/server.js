@@ -49,7 +49,7 @@ passport.deserializeUser( function( user, done ) {
     })
 } );
 
-// Auth Controllers
+// Auth Controller
 app.get( '/auth', passport.authenticate('auth0') );
 app.get( '/auth/callback', passport.authenticate('auth0', {
     successRedirect: 'http://localhost:3000/#/dashboard',
@@ -59,7 +59,11 @@ app.get( '/auth/me', auth_controller.get ); // Gets user if found
 app.get( '/auth/logout', auth_controller.logout )
 
 
-//CONTROLLERS BELOW
+// Friends Controller
+app.get('/api/friend/list', friends_controller.friends);
+app.post('/api/friend/add', friends_controller.addFriends);
+app.post('/api/friend/remove', friends_controller.deleteFriends);
+
 
 
 
