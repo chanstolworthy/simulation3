@@ -70,5 +70,5 @@ app.post('/api/friend/remove', friends_controller.deleteFriends);
 const port = 3001;
 const portChalk = chalk.cyan.underline.bold
 app.listen(port, () => {
-    console.log( portChalk(`Listening on port ${port}`) );
+    console.log( portChalk(`Listening on port this ${port}`) );
 })
