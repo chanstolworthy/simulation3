@@ -1,4 +1,5 @@
 const Auth0Strategy = require('passport-auth0');
+require('dotenv').config();
 
 module.exports = new Auth0Strategy( {
     domain: process.env.AUTH_DOMAIN,
@@ -13,7 +14,7 @@ module.exports = new Auth0Strategy( {
             if( user[0] )
                 return done( null, user )
             else {
-                db.create_user( [profile.displayName, profile.emails[0].value, profile.picture, profile.id] )
+                db.create_user( [profile.firstName, profile.lastName, profile.picture, profile.id] )
                   .then( user => {
                     return done( null, user[0] )
                 })
