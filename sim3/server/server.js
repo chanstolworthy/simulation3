@@ -8,6 +8,7 @@ const express = require('express')
     , passport = require('passport')
     , chalk = require('chalk');
 
+const friends_controller = require('./controllers/friends_controller');
 const strategy = require('./strategy');
 const auth_controller = require('./controllers/auth_controller');
 const Auth0Strategy = require('passport-auth0');
