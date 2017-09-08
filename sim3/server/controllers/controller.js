@@ -1,6 +1,6 @@
 module.exports = {
     friends: (req, res, next) => {
-        req.app.get('db').helousers().then((response) => {
+        req.app.get('db').get_table().then((response) => {
             res.status(200).send(response)
         })
     },

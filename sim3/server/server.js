@@ -61,7 +61,7 @@ app.get( '/auth/logout', auth_controller.logout )
 
 
 // Friends Controller
-app.get('/api/friend/list', controller.friends);
+app.get('/api/reccomended_friends', controller.friends);
 app.post('/api/profile', controller.addFriends);
 app.post('/api/friend/remove', controller.deleteFriends);
 

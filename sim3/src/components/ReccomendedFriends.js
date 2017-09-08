@@ -3,7 +3,7 @@ import axios from 'axios';
 import './Profile/Profile.css';
 import profile from './Profile/binary.jpg';
 import {Link} from 'react-router-dom';
-
+import './rec.css'
 
 class RecommendedFriends extends Component {
     constructor() {
@@ -14,7 +14,7 @@ class RecommendedFriends extends Component {
         console.log(this.state)
     }
     componentDidMount() {
-        axios.get('http://localhost:3000/api/reccomended_friends').then(response => {
+        axios.get('http://localhost:3001/api/reccomended_friends').then(response => {
 
             this.setState({
                 reccomendedFriends: response.data,
@@ -39,7 +39,9 @@ class RecommendedFriends extends Component {
                 <div>
                     {this.state.reccomendedFriends.map((friends, i) => {
                         return (
-                            <div key={i}> {friends.first_name} {friends.last_name}</div>
+                            
+                            <div key={i} className='border'> {friends.first_name} {friends.last_name} <button>add friend</button></div>
+                            
                         )
                     })}
                     }
