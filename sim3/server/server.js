@@ -21,13 +21,13 @@ app.use( session({
 }))
 app.use( passport.initialize() );
 app.use( passport.session() );
-passport.use( strategy );
+// passport.use( strategy );
 
 massive('localhost:3001/api/item'/*connectionString or URL*/).then(db => {
     app.set('bd', db)
-    /*ADD SEE FILE IF NEEDED 
+    /*ADD SEE FILE IF NEEDED */
     app.get('db').init.seed().then(res => {
-        console.log(res)*/
+        console.log(res)
 }).catch(err => {
     console.log(err)
 });
