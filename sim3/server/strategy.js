@@ -10,6 +10,8 @@ module.exports = new Auth0Strategy( {
     clientSecret: process.env.AUTH_CLIENT_SECRET,
     callbackURL: process.env.AUTH_CALLBACK
 },
+    ////////////// NOTE TO MASTER /////////////////
+    ////// UNCOMMENT THIS SECTION TO CONNECT TO DATABASE //////
     function( accessToken, refreshToken, extraParams, profile, done ) {
         // const db = app.get('db')
         // // If user exists, get their data. If not, create a new user
