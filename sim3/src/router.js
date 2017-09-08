@@ -1,21 +1,15 @@
 import React from 'react';
 import {Route, Switch} from 'react-router-dom';
+import Login from './components/Login/Login';
+import Profile from './components/Profile/Profile';
 
-import Component1 from './components/Component1';
-import Component2 from './components/Component2';
-import Component3 from './components/Component3';
+import Recommendedfriends from './components/ReccomendedFriends';
+
 
 export default (
     <Switch>
-        <Route path='/component1' component={Component1}/>
-        <Route path='/component2' render ={ () => {
-            return (
-                <Component2>
-                    <Switch>
-                        <Route path ='/component2/component3' component={Component3} />
-                    </Switch>
-                </Component2>
-            )
-        }} />
+        <Route exact path='/' component={Login}/>
+        <Route path='/dashboard' component={Recommendedfriends} />
+        <Route path ='/profile' component={Profile} />    
     </Switch>
 )

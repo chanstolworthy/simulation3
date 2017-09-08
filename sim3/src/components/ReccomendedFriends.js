@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import axios from 'axios'
+import axios from 'axios';
+import './Profile/Profile.css';
+import profile from './Profile/binary.jpg';
+import {Link} from 'react-router-dom';
 
 
 class RecommendedFriends extends Component {
@@ -24,8 +27,15 @@ class RecommendedFriends extends Component {
 
         return (
             <div className='RecommendedFriends'>
-
-                <h2> Reccomended Friends </h2>
+                <div className="profile-display">
+                    <img src={profile} alt="profile" />
+                    <div className="buttons">
+                    <Link to="/profile"><button className="cancel-button"> Edit Profile </button></Link>
+                        <p>Welcome to Helo! Find recommended friends based on your similarities, and even search for them by name. The more you update your profile, the better recommendations we can make!</p>
+                </div>
+                </div>
+                <div className="friends-display-box">        
+                <h2> Recommended Friends </h2>
                 <div>
                     {this.state.reccomendedFriends.map((friends, i) => {
                         return (
@@ -33,6 +43,7 @@ class RecommendedFriends extends Component {
                         )
                     })}
                     }
+                </div>
                 </div>
             </div>
         )

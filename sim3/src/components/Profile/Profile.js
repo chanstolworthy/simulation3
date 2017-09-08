@@ -37,8 +37,8 @@ export default class Profile extends Component {
             birthday_year: this.state.birthday_year
         }
         console.log('fired');
-        axios.post('http://localhost:3000/api/submit_user', data).then(response => {
-            console.log('user added', data)
+        axios.post('http://localhost:3001/api/profile', data).then(response => {
+            console.log('user added')
         })
     }
 
@@ -110,7 +110,7 @@ export default class Profile extends Component {
                 <div className="profile-display">
                     <img src={profile} alt="profile" />
                     <div className="buttons">
-                        <button className="update-button" onClick={() => this.submitUser(this.data)}>Update</button>
+                        <button className="update-button" onClick={() => this.submitUser(this.state)}>Update</button>
                         <button className="cancel-button" onClick={() => this.cancelUser(this.state)}>Cancel</button>
                     </div>
                 </div>
