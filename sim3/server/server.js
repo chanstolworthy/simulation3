@@ -25,9 +25,9 @@ app.use( session({
 app.use( passport.initialize() );
 app.use( passport.session() );
 
-massive( process.env.CONNECTIONSTRING ).then(db => {
+massive( process.env.CONNECTIONSTRING ).then( db => {
         app.set('bd', db);
-        app.get('db').init.seed().then(res => console.log(res) )
+        app.get('db').init.seed().then( res => console.log(res) )
     })
 //     .catch(err => {
 //         console.log(err)
@@ -52,7 +52,7 @@ passport.deserializeUser( function( user, done ) {
 // Auth Controllers
 app.get( '/auth', passport.authenticate('auth0') );
 app.get( '/auth/callback', passport.authenticate('auth0', {
-    successRedirect: 'ttp://localhost:3000/#/dashboard',
+    successRedirect: 'http://localhost:3000/#/dashboard',
     failureRedirect: 'http://localhost:3000/#/'
 }) );
 app.get( '/auth/me', auth_controller.get ); // Gets user if found
