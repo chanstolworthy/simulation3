@@ -25,9 +25,9 @@ app.use( session({
 app.use( passport.initialize() );
 app.use( passport.session() );
 
-massive( process.env.CONNECTIONSTRING ).then(db => {
+massive( process.env.CONNECTIONSTRING ).then( db => {
         app.set('bd', db);
-        app.get('db').init.seed().then(res => console.log(res) )
+        app.get('db').init.seed().then( res => console.log(res) )
     })
 //     .catch(err => {
 //         console.log(err)
@@ -49,22 +49,26 @@ passport.deserializeUser( function( user, done ) {
     })
 } );
 
-// Auth Controllers
+// Auth Controller
 app.get( '/auth', passport.authenticate('auth0') );
 app.get( '/auth/callback', passport.authenticate('auth0', {
-    successRedirect: 'ttp://localhost:3000/#/dashboard',
+    successRedirect: 'http://localhost:3000/#/dashboard',
     failureRedirect: 'http://localhost:3000/#/'
 }) );
 app.get( '/auth/me', auth_controller.get ); // Gets user if found
 app.get( '/auth/logout', auth_controller.logout )
 
 
-//CONTROLLERS BELOW
+// Friends Controller
+app.get('/api/friend/list', friends_controller.friends);
+app.post('/api/friend/add', friends_controller.addFriends);
+app.post('/api/friend/remove', friends_controller.deleteFriends);
+
 
 
 
 const port = 3001;
 const portChalk = chalk.cyan.underline.bold
 app.listen(port, () => {
-    console.log( portChalk(`Listening on port ${port}`) );
+    console.log( portChalk(`Listening on port this ${port}`) );
 })
