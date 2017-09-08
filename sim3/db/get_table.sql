@@ -1,2 +1,2 @@
 SELECT *
-FROM tableName;
+FROM helousers;
